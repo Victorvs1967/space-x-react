@@ -1,23 +1,22 @@
 import React from 'react';
 
+import Header from './components/header/Header';
+import Main from './components/main/Main';
+import Features from './components/features/Features';
+import Calendar from './components/calendar/Calendar';
+import Footer from './components/footer/Footer';
+import './style.css';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hello, World!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header/>
+      <Main/>
+      <Features/>
+      <Calendar/>
+      <Footer/>
+    </>
+);
 }
 
 export default App;
