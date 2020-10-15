@@ -1,10 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './components/header/Header';
 import Main from './components/main/Main';
 import Features from './components/features/Features';
 import Footer from './components/footer/Footer';
-import FetchData from './service/FetchData'
+import FetchData from './service/FetchData';
+import Home from './components/Home/Home';
+import Calendar from './components/calendar/Calendar';
 
 import './style.css';
 
@@ -16,10 +19,15 @@ class App extends React.Component {
     rocket: 'Falcon 1',
     rocketFeatures: null,
     rockets: [],
-    links: {},
+    company: null,
   };
 
   componentDidMount() {
+    this.updateRocket();
+    this.updateCompany();
+  };
+
+  updateRocket() {
     this.fetchData.getRocket()
     .then(data => {
       this.setState({ rockets: data.map(item => item.name) });
@@ -27,15 +35,11 @@ class App extends React.Component {
     })
     .then(data => data.find(item => item.name === this.state.rocket))
     .then(rocketFeatures => this.setState({ rocketFeatures }));
+  }
 
+  updateCompany = () => {
     this.fetchData.getCompany()
-    .then(data => this.setState({ links: data.links }));
-  };
-
-  updateRocket() {
-    this.fetchData.getRocket()
-    .then(data => data.find(item => item.name === this.state.rocket))
-    .then(rocketFeatures => this.setState({ rocketFeatures }));
+    .then(company => this.setState({ company }));
   }
 
   changeRocket = rocket => {
@@ -46,12 +50,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <BrowserRouter>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket} />
-        <Main rocket={this.state.rocket} />
-        <Features rocket={this.state.rocket} rocketFeatures={this.state.rocketFeatures} />
-        <Footer links={this.state.links} />
-      </>
+
+        <Route exact path='/'>
+          {this.state.company && <Home company={this.state.company} />}
+        </Route>
+
+        <Route path='/calendar'>
+          <Main />
+          <Calendar/>
+        </Route>
+
+        <Route path='/rocket'>
+          <Main rocket={this.state.rocket} />
+          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
+        </Route>
+
+        {this.state.company && <Footer {...this.state.company.links} />}
+      </BrowserRouter>
     );  
   }
 }

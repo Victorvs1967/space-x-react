@@ -6,8 +6,6 @@ const Calendar = () => (
 
     <section className="calendar">
 
-        <h1 className="title">Calendar SpaceX</h1>
-
         <div className="container">
             <ul className="calendar-list">
                 <li className="calendar-item">
