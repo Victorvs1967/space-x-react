@@ -19,8 +19,8 @@ const Header = (props) => (
     </nav>
     <nav className="secondary-nav">
       <ul className="list">
-        <li className="item"><a href="/" className="item-link">Home</a></li>
-        <li className="item"><a href="/calendar" className="item-link">Calendar</a></li>
+        <li className="item"><NavLink exact to="/" className="item-link">Home</NavLink></li>
+        <li className="item"><NavLink to="/calendar" className="item-link">Calendar</NavLink></li>
       </ul>
     </nav>
   </header>
