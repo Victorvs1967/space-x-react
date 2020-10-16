@@ -4,10 +4,10 @@ import RelaxWrapper from 'react-rellax-wrapper';
 import './features.css';
 
 const rockets = {
-	'Falcon 1': './img/falcon-1.png',
-	'Falcon 9': './img/falcon-9.png',
-	'Falcon Heavy': './img/falcon-heavy.png',
-	other: './img/starship.png',  
+	'Falcon 1': 'falcon-1',
+	'Falcon 9': 'falcon-9',
+	'Falcon Heavy': 'falcon-heavy',
+	other: 'starship',  
 }
 
 const Features = ({ name, description, diameter, height, mass, payload_weights: payloadWeights }) => (
@@ -41,7 +41,7 @@ const Features = ({ name, description, diameter, height, mass, payload_weights: 
 				</thead>
 			</table>
 			<RelaxWrapper speed={8}>
-			<img src={rockets[name] ? rockets[name] : rockets.other} alt="rocket" className="rocket" data-rellax-speed="14"/>
+			<img src={rockets[name] ? `./img/${rockets[name]}.png` : `./img/${rockets.other}.png`} alt="rocket" className="rocket" data-rellax-speed="14"/>
 			</RelaxWrapper>
 			<article>
 				<h3 className="features-subtitle">DESCRIPTION</h3>

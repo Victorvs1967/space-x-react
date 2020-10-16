@@ -14,7 +14,7 @@ const Main = ({ rocket }) => (
     <h1 className="title">{ rocket ? rocket : 'Calendar SpaceX' }</h1>
 
     <div className="video-container">
-      {rocket ? <video className="video" autoPlay loop muted src={`./video/${video.hasOwnProperty(rocket) ? video[rocket] : video.other}.mp4`} /> : ''}
+      {rocket && <video className="video" autoPlay loop muted src={`./video/${video.hasOwnProperty(rocket) ? video[rocket] : video.other}.mp4`} />}
     </div>
   </section>
 );

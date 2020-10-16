@@ -63,7 +63,7 @@ class App extends React.Component {
         </Route>
 
         <Route path='/rocket'>
-          <Main rocket={this.state.rocket} />
+          {<Main rocket={this.state.rocket} />}
           {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
         </Route>
 
