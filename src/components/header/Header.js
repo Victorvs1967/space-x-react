@@ -6,7 +6,7 @@ import './header.css';
 
 const Header = (props) => (
     <header className="header">
-    <a href="/"><img src={logo} alt="Logo Space X" className="logo"/></a>
+    <Link to="/"><img src={logo} alt="Logo Space X" className="logo"/></Link>
     <nav className="main-nav nav">
       <ul className="list">
         {props.rockets.map((item, i) => (
@@ -19,8 +19,8 @@ const Header = (props) => (
     </nav>
     <nav className="secondary-nav">
       <ul className="list">
-        <li className="item"><NavLink exact to="/" className="item-link">Home</NavLink></li>
-        <li className="item"><NavLink to="/calendar" className="item-link">Calendar</NavLink></li>
+        <li className="item"><NavLink exact to="/" className="item-link" activeClassName="active">Home</NavLink></li>
+        <li className="item"><NavLink to="/calendar" className="item-link" activeClassName="active">Calendar</NavLink></li>
       </ul>
     </nav>
   </header>
