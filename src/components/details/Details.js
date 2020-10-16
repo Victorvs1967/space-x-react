@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Youtube from 'react-youtube';
 
 import Main from '../main/Main';
 import useLaunches from '../hooks/useLaunches';
@@ -33,7 +34,7 @@ const Details = (props) => {
                         </div>
                     </div>
                     <div>
-                        <iframe className="details-youtube" width="560" height="315" src={`https://www.youtube.com/embed/${launch.links.youtube_id}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="111" />
+                        <Youtube className="details-youtube" videoId={launch.links.youtube_id} />
                     </div>
                 </div>
                 <a href={history.goBack} onClick={history.goBack} className="button button-back">go back</a>
