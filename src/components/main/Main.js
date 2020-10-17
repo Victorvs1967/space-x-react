@@ -14,8 +14,6 @@ const Main = ({ rocket, name }) => {
     setVideo(getVideo(rocket));
   }, [getVideo])
 
-  console.log(video);
-
   return (
     <section className="main">
       <h1 className="title">{ rocket || name }</h1>
