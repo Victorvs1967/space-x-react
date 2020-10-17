@@ -9,13 +9,14 @@ const Header = (props) => (
     <Link to="/"><img src={logo} alt="Logo Space X" className="logo"/></Link>
     <nav className="main-nav nav">
       <ul className="list">
-        {props.rockets.map((item, i) => (
+        {props.rockets.map((item, i) => {
+          return (
         <li key={i} className="item">
-          <Link to="/rocket" onClick={e => {props.changeRocket(item)}} className="item-link">{item}
-          {/* <Link to={`/rocket/${item.replace(' ', '_').toLowerCase()}`} onClick={e => {props.changeRocket(item)}} className="item-link">{item} */}
+          {/* <Link to='/rocket' onClick={e => {props.changeRocket(item)}} className="item-link">{item} */}
+          <Link to={`/rocket/${item.replace(' ', '_')}`} onClick={e => {props.changeRocket(item)}} className="item-link">{item}
           </Link>
         </li>
-        ))}
+        )})}
       </ul>
     </nav>
     <nav className="secondary-nav">

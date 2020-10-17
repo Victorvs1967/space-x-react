@@ -16,7 +16,7 @@ class App extends React.Component {
   fetchData = new FetchData();
 
   state = {
-    rocket: '',
+    rocket: 'Falcon 1',
     rocketFeatures: null,
     rockets: [],
     company: null,
@@ -54,9 +54,10 @@ class App extends React.Component {
         {this.state.rockets && <Header rockets={this.state.rockets} changeRocket={this.changeRocket} />}
 
         <Route exact path='/' render={() => this.state.company && <Home company={this.state.company}/>}/>
+        <Route path='/rocket/:rocket' render={({match}) => {
+          return( this.state.rocketFeatures && <Features {...this.state.rocketFeatures} match={match} /> );
+        }}/>
         <Route path='/calendar' component={Calendar}/>
-        <Route path='/rocket' render={() => this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}/>
-        {/* <Route path='/rocket/:rocket' render={({ match }) => this.state.rocketFeatures && <Features {...this.state.rocketFeatures} match={ match } />}/> */}
         <Route path='/details/:id' component={Details}/>
 
         {this.state.company && <Footer {...this.state.company}/>}
