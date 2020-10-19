@@ -11,14 +11,21 @@ const Calendar = () => {
 
     const { data } = useLaunches();
 
+    const loader = `
+        <div className='cssload-loader'>
+            <div className='cssload-inner cssload-one'></div>
+            <div className='cssload-inner cssload-two'></div>
+            <div className='cssload-inner cssload-three'></div>
+        </div>  
+    `;
+
     return (
         <>
             <Main name='Calendar SpaceX' />
             <section className="calendar">
                 <div className="container">
                     <ul className="calendar-list">
-                        {
-                            data.map(item => (
+                        { data ? data.map(item => (
                                 <li key={item.id} className="calendar-item">
                                     <article className="launches">
                                         <div className="launches-image">
@@ -30,7 +37,7 @@ const Calendar = () => {
                                         </div>
                                     </article>
                                 </li>
-                            ))
+                            )) : loader
                         }
                     </ul>
                 </div>
